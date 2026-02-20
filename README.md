@@ -1,9 +1,17 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+## TODO
+- Generate module, service, and controller
+```
+nest g module math
+nest g controller math
+nest g service math
+```
+- implement the following endpoints:
+  - /add?a=5&b=8
+  - substract?a=10&b=3
+  - multiply?a=5&b=8
+  - divide?a=6&b=3
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+- Add the Auth using JWT
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
     <p align="center">
