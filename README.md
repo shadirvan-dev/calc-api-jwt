@@ -11,7 +11,7 @@ nest g service math
   - multiply?a=5&b=8
   - divide?a=6&b=3
 
-- [ ] Add the Auth using JWT
+- [x] Add the Auth using JWT
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
     <p align="center">
