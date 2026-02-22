@@ -1,6 +1,9 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { MathService } from './math.service';
+import { AuthGuard } from '../auth/guards/auth.guard';
 
+
+@UseGuards(AuthGuard)
 @Controller()
 export class MathController {
     constructor(private mathService: MathService) { }
