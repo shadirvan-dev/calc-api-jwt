@@ -3,7 +3,7 @@
 This project is a secure calculator api backend that validate user using jwt and allow access to endpoints like add, substract, etc for calculation.
 
 # Testing 
-- Clone the repo : github.com/shadirvan-dev/calc-api-jwt
+- Clone the repo : `git clone https://github.com/shadirvan-dev/calc-api-jwt.git`
 - Install npm dependencies : `npm install`
 - Run Server : `npm run start:dev`
 - Use the credentials : `shadirvan` and `test123` for jwt token generation in `/auth/login` endpoint
