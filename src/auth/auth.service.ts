@@ -3,10 +3,11 @@ import { LoginDto } from './login-user.dto';
 import { UserResponseDto } from './user-response-dto';
 import { UsersService } from 'src/users/users.service';
 import { AuthResponseDto } from './auth-response.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-    constructor(private userService: UsersService) { }
+    constructor(private userService: UsersService, private jwtService: JwtService) { }
 
     async authenticate(input: LoginDto): Promise<AuthResponseDto> {
         const user = await this.validateUser(input);
@@ -15,11 +16,7 @@ export class AuthService {
             throw new UnauthorizedException();
         }
 
-        return {
-            accessToken: 'fake-access',
-            userId: user.userId,
-            username: user.username
-        }
+        return this.signIn(user)
     }
 
     async validateUser(input: LoginDto): Promise<UserResponseDto | null> {
@@ -33,5 +30,15 @@ export class AuthService {
 
         return null;
 
+    }
+
+    async signIn(user: UserResponseDto): Promise<AuthResponseDto> {
+
+        const tokenPayload = {
+            sub: user.userId,
+            username: user.username
+        };
+        const accessToken = await this.jwtService.signAsync(tokenPayload);
+        return { accessToken, username: user.username, userId: user.userId }
     }
 }
