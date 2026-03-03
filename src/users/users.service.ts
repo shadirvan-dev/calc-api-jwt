@@ -7,7 +7,7 @@ export class UsersService {
     // TODO: Fetch Users From the Database.
     private readonly users: CreateUserDto[] = [
         { userId: 1, username: "shadirvan", password: "test123" },
-        { userId: 2, username: "jacob", password: "jacob123" }
+        { userId: 2, username: "user", password: "user123" }
 
     ]
 
