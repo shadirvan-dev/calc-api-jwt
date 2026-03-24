@@ -1,6 +1,7 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { MathService } from './math.service';
 import { AuthGuard } from '../auth/guards/auth.guard';
+import { InputDto } from './dto/input.dto';
 
 
 @UseGuards(AuthGuard)
@@ -9,25 +10,33 @@ export class MathController {
     constructor(private mathService: MathService) { }
 
     @Get('add')
-    add(@Query('a') a: string, @Query('b') b: string) {
-        return { result: this.mathService.add(+a, +b) }
+    add(@Query() query: InputDto) {
+
+
+        return { result: this.mathService.add(query.a, query.b) }
     }
 
     @Get('substract')
-    substract(@Query('a') a: string, @Query('b') b: string) {
-        return { result: this.mathService.substract(+a, +b) }
+    substract(@Query() query: InputDto) {
+
+
+        return { result: this.mathService.substract(query.a, query.b) }
 
     }
 
     @Get('multiply')
-    multiply(@Query('a') a: string, @Query('b') b: string) {
-        return { result: this.mathService.multiply(+a, +b) }
+    multiply(@Query() query: InputDto) {
+
+
+        return { result: this.mathService.multiply(query.a, query.b) }
 
     }
 
     @Get('divide')
-    divide(@Query('a') a: string, @Query('b') b: string) {
-        return { result: this.mathService.divide(+a, +b) }
+    divide(@Query() query: InputDto) {
+
+
+        return { result: this.mathService.divide(query.a, query.b) }
 
     }
 
