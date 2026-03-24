@@ -18,7 +18,7 @@ export class AuthService {
         const user = await this.validateUser(input);
 
         if (!user) {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException("Invalid Credentials");
         }
 
         return this.signIn(user);

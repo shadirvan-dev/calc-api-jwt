@@ -1,4 +1,4 @@
-import { Body, Controller, NotImplementedException, Post } from '@nestjs/common';
+import { Body, ConflictException, Controller, InternalServerErrorException, NotImplementedException, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './login-user.dto';
 import { InjectRepository } from '@nestjs/typeorm/dist/common';
@@ -26,7 +26,17 @@ export class AuthController {
             username: body.username,
             password: hash,
         });
+        try {
 
-        return this.userRepo.save(user);
+            await this.userRepo.save(user);
+            return { "status": "Success", "message": "User created" };
+        } catch (err) {
+            if (err.errno === 19) {
+                throw new ConflictException("User Already Exists");
+            }
+
+        }
+
+
     }
 }
